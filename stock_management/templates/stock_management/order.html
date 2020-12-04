@@ -1,0 +1,77 @@
+{% extends 'stock_management/base.html' %}
+
+    {% block main %}
+
+        <table class="orders table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Commande</th>
+                    <th scope="col">Prix d'achat </th>
+                    <th scope="col">Fournisseur</th>
+                    <th scope="col">Disponibilité</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for orders in list_orders %}
+                <tr>
+                    <th scope="row">{{ orders.primary_key }}</th>
+                    <td>{{ orders.identifier }}</td>
+                    <td>{{ orders.date }}</td>
+                    <td>{{ orders.supplier_foreign_key }}</td>
+                    <td>{{ orders.buying_price_tax_free }}</td>
+                    <td>{{ orders.buying_price_full_tax }}</td>
+                    <td>
+                        <a href="{% url 'delete_order' orders.pk %}" class="btn btn-info"> Supprimer</a>
+                        <a href="{% url 'modify_order' orders.pk %}" class="btn btn-info">Modifier</a>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Details</button>
+                    </td>
+                </tr>
+            {% empty %}
+            <p>Aucun produit</p>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a class="add_link btn btn-info" href="{% url 'create_order'%}">  Nouvelle commande</a>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Liste des produits de la commande</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-info">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+{% endblock %}
+
+
+<!--
+        {% for order_items in list_order_items %}
+                    <li>{{ order_items.primary_key }}</li>
+                    <li>{{ order_items.order }}</li>
+                    <li>{{ order_items.product }}</li>
+
+                <span>
+                    <a href="{% url 'delete_order_items' order_items.pk %}"> Supprimer</a>
+
+                </span>
+
+        {% endfor %}
+        -->

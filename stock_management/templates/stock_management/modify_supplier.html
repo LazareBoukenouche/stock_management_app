@@ -1,0 +1,29 @@
+{% extends 'stock_management/base.html' %}
+
+{% block main %}
+<h1 style="margin-left:5vw;margin-top:5vh;">Modifier un fournisseur</h1>
+
+{% load crispy_forms_tags %}
+
+<form action="{% url 'modify_supplier' obj.pk %}" method="post" style="padding-left:5vw;padding-right:5vw;padding-top:10vh;padding-bottom:10vh;">
+    {{ form.non_field_errors }}
+    {{ form.errors }}
+
+    <div id="main_infos" class="row">
+        <!-- name, image, articles category fields -->
+        <div class="col-12">
+            <!-- {{ form.name.errors }} -->
+            {{ form.name | as_crispy_field }}
+        </div>
+    </div>
+
+    {% csrf_token %}
+    <input type="submit" value="Submit" class="btn btn-info"/>
+</form>
+{% if form_send %}
+<h2>Le fournisseur {{old_name}} est remplacé par {{obj.name}} !</h2>
+{% endif %}
+
+<a style="margin:5vw;" class="btn btn-info"  href="{% url 'list_supplier' %}">Retourner sur la liste des fournisseur</a>
+
+{% endblock %}

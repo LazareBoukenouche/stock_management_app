@@ -1,0 +1,42 @@
+{% extends 'stock_management/base.html' %}
+
+    {% block main %}
+        <table class="products table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Categorie</th>
+                    <th scope="col">Produit</th>
+                    <th scope="col">Prix d'achat </th>
+                    <th scope="col">Fournisseur</th>
+                    <th scope="col">Disponibilité</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                {% for produits in list_produits %}
+                    <tr>
+                        <th scope="row">{{ produits.primary_key }}</th>
+                        <td>{{ produits.article_category }}</td>
+                        <td>{{ produits.name }}</td>
+                        <td>{{ produits.buying_price_tax_free }}</td>
+                        <td>{{produits.supplier_foreign_key}}</td>
+                        <td>{% if produits.is_active_selling == True %} Oui {% endif %} {% if produits.is_active_selling == False %} Non {% endif %}</td>
+                        <td>{{produits.current_stock}}</td>
+                        <td>
+                            <a href="{% url 'delete_article' produits.pk %}" class="btn btn-info"> Supprimer</a>
+                            <a href="{% url 'modify_article' produits.pk %}" class="btn btn-info">Modifier</a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <p>Aucun produit</p>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a class="add_link btn btn-info" href="{% url 'add_article'%}" >Ajouter un article</a>
+
+    {% endblock %}

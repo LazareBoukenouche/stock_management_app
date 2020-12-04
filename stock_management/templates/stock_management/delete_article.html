@@ -1,0 +1,11 @@
+{% extends 'stock_management/base.html' %}
+
+{% block main %}
+
+<h1>Supprimer un article</h1>
+
+<h2>L'article {{obj}} est supprimé !</h2>
+
+<a href="{% url 'liste_articles' %}">Retourner sur la liste des articles</a>
+
+{% endblock %}

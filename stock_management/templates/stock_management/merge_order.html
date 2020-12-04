@@ -1,0 +1,54 @@
+{% extends 'stock_management/base.html' %}
+
+{% block main %}
+<h1>Fusionner des commandes</h1>
+
+<form action="{% url 'merge_order' %}" enctype="multipart/form-data" method="post">
+    {{ form.non_field_errors }}
+    {{ form.errors }}
+
+    <div id="main_infos">
+        <h3>{{ orders }}</h3>
+        <div>
+                {{ form.identifier.errors }}
+                <label id="label_identifier" for="{{ form.identifier.id_for_label }}">ID</label>
+                {{ form.identifier }}
+        </div>
+
+        <div>
+                {{ form.date.errors }}
+                <label id="label_date" for="{{ form.date.id_for_label }}">Date</label>
+                {{ form.date }}
+        </div>
+        <div class="order_to_merge">
+            <div>
+                {{ form.order.errors }}
+                <label id="label_order" for="{{ form.order.id_for_label }}">Commande à fusionner</label>
+                {{ form.order }}
+            </div>
+        </div>
+
+        <div class="order_to_merge">
+            <div>
+                {{ form.order.errors }}
+                <label id="label_order" for="{{ form.order.id_for_label }}">Commande à fusionner</label>
+                {{ form.order }}
+            </div>
+        </div>
+
+    </div>
+
+
+    {% csrf_token %}
+    <input type="submit" value="Submit" />
+</form>
+
+{% if form_send %}
+<h2>Le produit {{obj.name}} est ajouté !</h2>
+{% endif %}
+
+
+
+<a href="{% url 'list_order' %}">Retourner sur la liste des commandes</a>
+
+{% endblock %}

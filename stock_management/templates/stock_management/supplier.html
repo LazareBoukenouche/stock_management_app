@@ -1,0 +1,33 @@
+{% extends 'stock_management/base.html' %}
+
+{% block main %}
+
+        <table class="products table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for fournisseurs in tous_les_fournisseurs %}
+                    <tr>
+                        <th scope="row">{{ fournisseurs.primary_key}}</th>
+                        <td>{{ fournisseurs.name }}</td>
+                        <td>
+                            <a href="{% url 'delete_supplier' fournisseurs.pk %}" class="btn btn-info">Supprimer</a>
+                            <a href="{% url 'modify_supplier' fournisseurs.pk %}" class="btn btn-info">Modifier</a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <p>Aucun produit</p>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    <a class="add_link btn btn-info" href="{% url 'add_supplier'%}">Ajouter un fournisseur</a>
+
+
+{% endblock %}

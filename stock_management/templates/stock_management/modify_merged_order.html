@@ -1,0 +1,44 @@
+{% extends 'stock_management/base.html' %}
+
+{% block main %}
+<h1>Modifier une commande</h1>
+
+<form action="{% url 'modify_merged_order' obj.primary_key %}" method="post">
+    {{ form.non_field_errors }}
+    {{ form.errors }}
+
+    <div>
+        {{ form.identifier.errors }}
+        <label id="label_identifier" for="{{ form.identifier.id_for_label }}">ID</label>
+        {{ form.identifier }}
+    </div>
+
+    <div>
+        {{ form.date.errors }}
+        <label id="label_date" for="{{ form.date.id_for_label }}">Date</label>
+        {{ form.date }}
+    </div>
+
+    <div>
+        {{ form.order_foreign_key.errors }}
+        <label id="label_order_foreign_key" for="{{ form.order_foreign_key.id_for_label }}">Commande Initiale</label>
+        {{ form.order_foreign_key }}
+    </div>
+
+    <div>
+        {{ form.order_foreign_key.errors }}
+        <label id="label_order_foreign_key" for="{{ form.order_foreign_key.id_for_label }}">Commande Initiale</label>
+        {{ form.order_foreign_key }}
+    </div>
+
+    {% csrf_token %}
+    <input type="submit" value="Submit" />
+</form>
+
+{% if form_send %}
+<h2>Le produit {{old_name}} est remplacé par {{obj.name}} !</h2>
+{% endif %}
+
+<a href="{% url 'list_order' %}">Retourner sur la liste des commandes</a>
+
+{% endblock %}

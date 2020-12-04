@@ -1,0 +1,85 @@
+{% extends 'stock_management/base.html' %}
+
+{% block main %}
+<h1 style="margin-left:5vw;margin-top:5vh;">Modifier une commande</h1>
+
+{% load crispy_forms_tags %}
+
+<form action="{% url 'modify_order' obj.primary_key %}" method="post" style="padding-left:5vw;padding-right:5vw;padding-top:10vh;padding-bottom:10vh;">
+    {% csrf_token %}
+   <!--
+    {{ form.non_field_errors }}
+    {{ form.errors }}
+    -->
+
+    <div id="main_infos" class="col-6">
+
+        <div>
+            <!--{{ form.identifier.errors }}-->
+            {{ form.identifier |as_crispy_field}}
+        </div>
+
+        <div>
+            <!--{{ form.date.errors }}-->
+            {{ form.date |as_crispy_field }}
+        </div>
+
+        <div>
+           <!-- {{ form.supplier_foreign_key.errors }}-->
+            {{ form.supplier_foreign_key |as_crispy_field }}
+        </div>
+
+        <div>
+            <!--{{ form.buying_price_tax_free.errors }}-->
+            {{ form.buying_price_tax_free |as_crispy_field }}
+        </div>
+
+        <div>
+        <!--   {{ form.buying_price_full_tax.errors }} -->
+            {{ form.buying_price_full_tax |as_crispy_field }}
+        </div>
+        <!--
+        <div>
+            {{ form.product_many_to_many_field.errors }}
+            <label id="label_product_many_to_many_field" for="{{ form.product_many_to_many_field.id_for_label }}">Product</label>
+            {{ form.product_many_to_many_field }}
+        </div>
+        -->
+    </div>
+
+
+    {% csrf_token %}
+    <input type="submit" value="Submit" class="btn btn-info" />
+</form>
+<!--
+<div class="hidden" id="modal_overlay">
+    <div id="modal">
+        <button id="cancel"> Annuler</button>
+        <div class="all_products">
+            {% for product in products %}
+            <div class="product"><a class="item_button" item_pk="{{ product.primary_key }}">{{ product.name }}</a></div>
+                    {% empty %}
+                    <p>Aucun produit.</p>
+                {% endfor %}
+        </div>
+    </div>
+</div>
+
+<a href="#" id="add_item">Add Item</a>
+{% if form_send %}
+<h2>Le produit {{old_name}} est remplacé par {{obj.name}} !</h2>
+{% endif %}
+
+{% if form.errors %}
+      {% for field in form %}
+
+           {% for error in field.errors %}
+                {{field.label}}: {{ error|escape }}
+           {% endfor %}
+
+      {% endfor %}
+{% endif %}
+-->
+<a style="margin:5vw;" class="btn btn-info" href="{% url 'list_order' %}">Retourner sur la liste des commandes</a>
+
+{% endblock %}
