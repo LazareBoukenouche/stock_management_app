@@ -6,15 +6,15 @@ from . import views
 
 urlpatterns = [
 
-    path('supplier', views.list_supplier, name='list_supplier'),
-    path('supplier/add', views.add_supplier, name="add_supplier"),
-    path('supplier/delete/<int:pk>', views.delete_supplier, name="delete_supplier"),
-    path('supplier/modify/<int:pk>', views.modify_supplier, name="modify_supplier"),
-
     path('', views.list_articles, name="list_articles"),
     path('articles/add', views.add_article, name="add_article"),
     path('articles/delete/<int:pk>', views.delete_article, name="delete_article"),
     path('articles/modify/<int:pk>', views.modify_article, name="modify_article"),
+
+    path('supplier', views.list_supplier, name='list_supplier'),
+    path('supplier/add', views.add_supplier, name="add_supplier"),
+    path('supplier/delete/<int:pk>', views.delete_supplier, name="delete_supplier"),
+    path('supplier/modify/<int:pk>', views.modify_supplier, name="modify_supplier"),
 
     path('order', views.list_order, name="list_order"),
     path('order/create', views.create_order, name="create_order"),
