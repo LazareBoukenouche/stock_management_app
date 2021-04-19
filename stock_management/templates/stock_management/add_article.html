@@ -8,116 +8,37 @@
     
 <form action="{% url 'add_article' %}" enctype="multipart/form-data" method="post" style="padding-left:5vw;padding-right:5vw;padding-top:10vh;padding-bottom:10vh;">
     {% csrf_token %}
-   <!--
-    {{ form.non_field_errors }}
-    {{ form.errors }}
-    -->
+   
+    <!-- {{ form.non_field_errors }}
+    {{ form.errors }} -->
+   
     
     <div id="main_infos" class="row">
-        <!-- name, image, articles category fields -->
+        
         <div class="col-4">
-             <!-- {{ form.name.errors }} -->
+             {{ form.name.errors }}
             {{ form.name |as_crispy_field }}
         </div>
-
+    
         <div class="col-4">
-            {{ form.image.errors }}
-            {{ form.image |as_crispy_field }}
-        </div>
-
-        <div class="col-4">
-             <!-- {{ form.article_category.errors }} -->
+             {{ form.article_category.errors }}
             {{ form.article_category |as_crispy_field }}
         </div>
     </div>
 
-    <div id="ticket_infos" class="row">
-        <!-- barcode, capacity_volume, physical_unit,description, composition  -->
-        <div class="col-4">
-          <!--     {{ form.barcode.errors }} -->
-            {{ form.barcode |as_crispy_field  }}
-        </div>
-
-        <div class="col-4">
-            {{ form.capacity_volume |as_crispy_field  }}
-        </div>
-
-        <div class="col-4">
-
-            {{ form.physical_unit |as_crispy_field  }}
-        </div>
-
-        <div class="col-4">
-
-            {{ form.description |as_crispy_field  }}
-        </div>
-
-        <div class="col-4">
-            {{ form.composition |as_crispy_field  }}
-        </div>
-    </div>
 
     <div id="selling_infos" class="row">
-        <!-- is_active_selling, selling_gross_price, selling_conditions, selling_net_price -->
         <div class="col-3">
-            {{ form.is_active_selling |as_crispy_field }}
-        </div>
-
-        <div class="col-3">
-            {{ form.selling_gross_price |as_crispy_field  }}
-        </div>
-
-        <div class="col-3">
-            {{ form.selling_conditions |as_crispy_field  }}
-        </div>
-
-        <div class="col-3">
+            {{ form.selling_net_price.errors }}
             {{ form.selling_net_price  |as_crispy_field }}
         </div>
-
         
     </div>
 
-    <div id="tax_infos" class="row">
-        <!-- value_added_tax_rate, value_added_tax_actual_value  -->
-        <div class="col-6">
-            {{ form.value_added_tax_rate.errors }}
-            {{ form.value_added_tax_rate | as_crispy_field }}
-        </div>
-
-        <div class="col-6">
-            {{ form.value_added_tax_actual_value.errors }}
-            {{ form.value_added_tax_actual_value | as_crispy_field }}
-        </div>
-    </div>
-
     <div id="supplier_infos" class="row">
-        <!-- supplier_foreign_key, supplier_discount_percentage, reference_supplier   -->
         <div class="col-4">
+            {{ form.supplier_foreign_key.errors }}
             {{ form.supplier_foreign_key | as_crispy_field }}
-        </div>
-
-        <div class="col-4">
-            {{ form.supplier_discount_percentage | as_crispy_field }}
-        </div>
-
-        <div class="col-4">
-            {{ form.reference_supplier | as_crispy_field }}
-        </div>
-    </div>
-
-    <div id="buying_infos" class="row">
-        <!-- buying_price_tax_free, buying_conditions, is_active_buying, -->
-        <div class="col-4" >
-            {{ form.buying_price_tax_free | as_crispy_field}}
-        </div>
-
-        <div class="col-4">
-            {{ form.buying_conditions | as_crispy_field }}
-        </div>
-
-        <div class="col-4">
-            {{ form.is_active_buying | as_crispy_field }}
         </div>
     </div>
 

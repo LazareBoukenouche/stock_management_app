@@ -24,7 +24,7 @@
                         <a class="flex-sm-fill text-sm-center nav-link btn btn-info" {% if current_page == "articles" %} class="current_page"{% endif %} href="{% url 'list_articles' %}"> Gestion des produits</a>
                         <a class="flex-sm-fill text-sm-center nav-link btn btn-info"{% if current_page == "commandes" %} class="current_page"{% endif %} href="{% url 'list_order' %}"> Gestion des commandes</a>
                         <a class="flex-sm-fill text-sm-center nav-link btn btn-info"{% if current_page == "page_fournisseurs" %} class="current_page"{% endif %} href="{% url 'list_supplier' %}">Gestion des fournisseurs</a>
-                        <a class="flex-sm-fill text-sm-center nav-link btn btn-info"{% if current_page == "livraisons" %} class="current_page"{% endif %} href="{% url 'list_articles' %}">Gestion des livraisons</a>
+
                     </div>
                 </nav>
                 {% endblock %}

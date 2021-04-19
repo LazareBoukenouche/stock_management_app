@@ -9,7 +9,6 @@
                     <th scope="col">Produit</th>
                     <th scope="col">Prix d'achat </th>
                     <th scope="col">Fournisseur</th>
-                    <th scope="col">Disponibilité</th>
                     <th scope="col">Stock</th>
                     <th scope="col">Actions</th>
                 </tr>
@@ -20,11 +19,10 @@
                 {% for produits in list_produits %}
                     <tr>
                         <th scope="row">{{ produits.primary_key }}</th>
-                        <td>{{ produits.article_category }}</td>
                         <td>{{ produits.name }}</td>
-                        <td>{{ produits.buying_price_tax_free }}</td>
+                        <td>{{ produits.article_category }}</td>
+                        <td>{{ produits.selling_net_price }}</td>
                         <td>{{produits.supplier_foreign_key}}</td>
-                        <td>{% if produits.is_active_selling == True %} Oui {% endif %} {% if produits.is_active_selling == False %} Non {% endif %}</td>
                         <td>{{produits.current_stock}}</td>
                         <td>
                             <a href="{% url 'delete_article' produits.pk %}" class="btn btn-info"> Supprimer</a>
@@ -37,6 +35,6 @@
             </tbody>
         </table>
 
-        <a class="add_link btn btn-info" href="{% url 'add_article'%}" >Ajouter un article</a>
+        <a class="add_link btn btn-info" style="margin-left:40%;" href="{% url 'add_article'%}" >Ajouter un article</a>
 
     {% endblock %}

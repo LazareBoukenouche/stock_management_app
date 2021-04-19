@@ -36,7 +36,7 @@
             </tbody>
         </table>
 
-        <a class="add_link btn btn-info" href="{% url 'create_order'%}">  Nouvelle commande</a>
+        <a class="add_link btn btn-info" style="margin-left:40%;" href="{% url 'create_order'%}">  Nouvelle commande</a>
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -60,18 +60,3 @@
         </div>
 
 {% endblock %}
-
-
-<!--
-        {% for order_items in list_order_items %}
-                    <li>{{ order_items.primary_key }}</li>
-                    <li>{{ order_items.order }}</li>
-                    <li>{{ order_items.product }}</li>
-
-                <span>
-                    <a href="{% url 'delete_order_items' order_items.pk %}"> Supprimer</a>
-
-                </span>
-
-        {% endfor %}
-        -->
