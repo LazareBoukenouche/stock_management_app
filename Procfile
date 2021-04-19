@@ -1,0 +1,1 @@
+web: gunicorn stock_management_app.wsgi
